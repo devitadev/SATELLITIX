@@ -1,0 +1,27 @@
+.slogan {
+    text-align: center;
+    font-size: 20px;
+}
+
+.description {
+    margin: 32px 7vw 40px 7vw;
+    text-align: center;
+    font-size: 18px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 6vw;
+    margin-bottom: 2vw;
+}
+
+.manfaat {
+    font-size: 18px;
+    margin: auto 12px;
+    text-align: center;
+}
+
+[data-testid="stHorizontalBlock"] {
+    align-items: center;
+    margin-bottom: 34px;
+}

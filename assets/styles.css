@@ -1,0 +1,44 @@
+.navbar{
+    font-family: 'Trebuchet MS', sans-serif;
+    position: fixed;
+    width: 100%;
+    background: #000B4F;
+    z-index: 99999999999999999999;
+    left: 0rem;
+    top: 0rem;
+}
+
+.nav-logo{
+    height: 58px;
+    padding: 6px 24px;
+    float: left;
+    display: block;
+}
+
+.navitem{
+    float: left;
+    display: block;
+    color: #f2f2f2 !important;
+    text-align: center;
+    padding: 18px 18px;
+    text-decoration: none !important;
+    font-size: 15px;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+.navitem:hover{
+    background-color: #92A7D1;
+}
+
+footer:after {
+    content: 'Copyright @ SATELLITIX 2023 | DEVITA';
+    display: block;
+    position: relative;
+    color: #000B4F;
+    padding: 4px 0 14px 0;
+    letter-spacing: 0.6px;
+}
+
+div.block-container {
+    padding-top: 0rem;
+}
