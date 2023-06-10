@@ -2,11 +2,10 @@ h2{
     text-align: center;
     padding: 0;
     letter-spacing: 1px;
-    margin-bottom: 10px;
 }
 
 h3 {
-    margin: calc(3vw + 16px) auto 5px auto;
+    margin: calc(2.5vw + 16px) auto 5px auto;
     padding: 0;
     font-size: 22px;
 }
@@ -28,4 +27,8 @@ th, td {
 
 th {
     background-color: #fafafd;
+}
+
+iframe[srcdoc*="navigationTabs"] {
+    height: calc(1vw + 80px);
 }
