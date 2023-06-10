@@ -7,3 +7,12 @@ h2 {
 iframe[srcdoc*="navigationTabs"] {
     height: calc(1vw + 80px);
 }
+
+iframe {
+    width: 100%;
+}
+
+@media only screen and (max-width: 575px){
+
+    
+}
