@@ -1,15 +1,26 @@
 h2 {
     padding: 0;
     letter-spacing: 1px;
+    margin-top: calc(1vw + 48px);
     margin-bottom: 10px;
 }
 
-iframe[srcdoc*="navigationTabs"] {
-    height: calc(1vw + 80px);
+h3 {
+    text-align: justify;
+    font-size: 18px;
+    margin-top: 20px;
 }
 
 iframe {
     width: 100%;
+}
+
+iframe[srcdoc*="navigationTabs"] {
+    height: 40px
+}
+
+[data-testid="stHorizontalBlock"] {
+    align-items: end;
 }
 
 @media only screen and (max-width: 575px){
