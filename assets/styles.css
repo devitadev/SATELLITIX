@@ -10,23 +10,38 @@
 
 .nav-logo{
     height: 58px;
+    width: 118px;
     padding: 6px 24px;
     float: left;
-    display: block;
 }
 
-.navitem{
-    float: left;
+.navbar-toogle{
+    height: 58px;
+    width: 54px;
+    display: none;
+    padding: 12px;
+    margin: auto 14px;
+}
+
+.navbar, .nav-container, #navbar {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-container {
+    justify-content: space-between;
+}
+
+.navbar-link{
     display: block;
     color: #f2f2f2 !important;
     text-align: center;
     padding: 18px 18px;
     text-decoration: none !important;
     font-size: 15px;
-    font-family: 'Trebuchet MS', sans-serif;
 }
 
-.navitem:hover{
+.navbar-link:hover{
     background-color: #92A7D1;
 }
 
@@ -42,4 +57,16 @@ footer:after {
 div.block-container {
     padding-top: 0rem;
     padding-bottom: 8rem;
+}
+
+@media only screen and (max-width: 640px){
+    .navbar, #navbar {
+        flex-direction: column;
+    }
+    #navbar {
+        display: none;
+    }
+    .navbar-toogle{
+        display: flex;
+    }
 }
