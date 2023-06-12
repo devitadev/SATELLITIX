@@ -29,6 +29,10 @@ th {
     background-color: #fafafd;
 }
 
+th.blank, th.row_heading {
+    display: none;
+}
+
 iframe[srcdoc*="navigationTabs"] {
     height: calc(1vw + 80px);
 }

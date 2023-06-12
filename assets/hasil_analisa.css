@@ -15,6 +15,19 @@ iframe {
     width: 100%;
 }
 
+[data-testid="stTable"] {
+    margin: 0;
+    padding: 0;
+}
+
+th.blank, th.row_heading {
+    display: none;
+}
+
+.col_heading.col0 {
+    min-width: 140px;
+}
+
 iframe[srcdoc*="navigationTabs"] {
     height: 40px
 }

@@ -50,6 +50,16 @@ def load_view():
         folium_static(map_pred_with_other_features)
     map_state.text("")
 
+    st.subheader("KETERANGAN DATA")
+    df_ket_features = pd.DataFrame()
+    df_ket_features['DATA'] = ['Light Features', 'Extracted Features', 'Other Indicators']
+    df_ket_features['KETERANGAN'] = [
+        'Data kecerahan dari masing-masing kabupaten/kota yang terdiri dari 5 variabel yaitu, max light, min light, mean light, std light, dan std light', 
+        'Data hasil extraksi fitur layer ke-2 terakhir dari model VGG16 dengan augmentasi dan fine-tuning',
+        'Data persentase rumah tangga yang memiliki akses air minum layak, jumlah bayi yang lahir bergizi kurang, dan persentase rumah tangga menggunakan sumber listrik PLN'
+    ]
+    st.table(df_ket_features)
+
 
     # section 2
     st.header('PETA VISUALISASI DATA BERDASARKAN KABUPATEN/KOTA TAHUN 2021')
@@ -81,3 +91,44 @@ def load_view():
         st.subheader('Peta Sebaran Kecerahan Setiap Kabupaten/Kota Berdasarkan Citra Satelit Malam Hari')
         folium_static(map_mean_light)
         map_state.text("")
+
+
+    # section 
+    st.header('DATA')
+
+    # prepare data frame
+    df = pd.DataFrame()
+    df['Kabupaten/Kota'] = [kab_kota.lower().title() for kab_kota in merged_data['KAB_KOTA']]
+    df['Max Light'] = merged_data['0']
+    df['Min Light'] = merged_data['1']
+    df['Mean Light'] = merged_data['2']
+    df['Median Light'] = merged_data['3']
+    df['Std Light'] = merged_data['4']
+    df['Air Minum Layak'] = merged_data['5']
+    df['Bayi Kurang Gizi'] = merged_data['6']
+    df['Pengguna PLN'] = merged_data['7']
+    df['P0 actual'] = merged_data['y actual']
+    df['P0 pred 1'] = merged_data['y pred with light and extracted features']
+    df['P0 pred 2'] = merged_data['y pred with light, extracted, and other features']
+    
+    st.dataframe(df, width = 2000)
+
+    st.subheader('KETERANGAN')
+
+    df_keterangan = pd.DataFrame()
+    df_keterangan['VARIABEL'] = df.columns.values.tolist()
+    df_keterangan['KETERANGAN'] = [
+        'Nama kabupaten/kota',
+        'Kecerahan maksimun dari setiap pixel pada kabupaten/kota berdasarkan citra satelit malam hari',
+        'Kecerahan minimum dari setiap pixel pada kabupaten/kota berdasarkan citra satelit malam hari',
+        'Rata-rata kecerahan dari setiap pixel pada kabupaten/kota berdasarkan citra satelit malam hari',
+        'Median dari kecerahan setiap pixel pada kabupaten/kota berdasarkan citra satelit malam hari',
+        'Standar deviasi dari kecerahan setiap pixel pada kabupaten/kota berdasarkan citra satelit malam hari',
+        'Persentase rumah tangga yang memiliki akses air minum layak berdasarkan BPS',
+        'Jumlah bayi yang lahir bergizi kurang berdasarkan BPS',
+        'Persentase rumah tangga menggunakan sumber listrik PLN berdasarkan BPS',
+        'Persentase Penduduk Miskin berdasarkan BPS',
+        'Persentase Penduduk Miskin berdasarkan hasil prediksi menggunakan Light Features dan Extracted Features',
+        'Persentase Penduduk Miskin berdasarkan hasil prediksi menggunakan Light Features, Extracted Features, dan Other Indicators'
+    ]
+    st.table(df_keterangan)
