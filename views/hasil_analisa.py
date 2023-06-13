@@ -93,7 +93,7 @@ def load_view():
         map_state.text("")
 
 
-    # section 
+    # section 3
     st.header('DATA')
 
     # prepare data frame
@@ -132,3 +132,16 @@ def load_view():
         'Persentase Penduduk Miskin berdasarkan hasil prediksi menggunakan Light Features, Extracted Features, dan Other Indicators'
     ]
     st.table(df_keterangan)
+
+
+     # section 4
+    st.header('EVALUASI MODEL')
+
+    df_evaluasi = pd.DataFrame()
+    df_evaluasi['MODEL'] = ['Ridge Regression', 'Ridge Regression']
+    df_evaluasi['INDIKATOR'] = ['Light Features dan Extracted Features', 'Light Features, Extracted Features, dan Other Indicators']
+    df_evaluasi['Mean Absolute Error (MAE)'] = [1.706283723, 1.691530268]
+    df_evaluasi['Mean Absolute Percentage Error (MAPE) (%)'] = [14.13133291, 14.01198108]
+    df_evaluasi['R-Square'] = [0.5786875014, 0.5757788748]
+    
+    st.table(df_evaluasi)
