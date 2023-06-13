@@ -6,7 +6,6 @@ import geopandas as gpd
 
 from folium import Choropleth
 from streamlit_folium import folium_static
-from sklearn.preprocessing import StandardScaler
 
 # halaman hasil analisa
 
