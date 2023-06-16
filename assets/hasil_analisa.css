@@ -1,7 +1,7 @@
 h2 {
     padding: 0;
     letter-spacing: 1px;
-    margin-top: calc(1vw + 48px);
+    margin-top: calc(1vw + 32px);
     margin-bottom: 10px;
 }
 
@@ -29,14 +29,9 @@ th.blank, th.row_heading {
 }
 
 iframe[srcdoc*="navigationTabs"] {
-    height: 40px
+    height: 20px
 }
 
 [data-testid="stHorizontalBlock"] {
     align-items: end;
-}
-
-@media only screen and (max-width: 575px){
-
-    
 }
