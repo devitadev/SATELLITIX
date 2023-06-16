@@ -40,12 +40,31 @@ def load_view():
         image = Image.open(image_path).resize((1000, 500))
         st.markdown(keterangan)
         st.image(image)
-    
+
     # section 2
+    st.header("CITRA SATELIT BERDASARKAN CLUSTER INTENSITAS CAHAYA")
+
+    columns = st.columns(6)
+    with columns[0]: 
+        st.subheader('PARAMETER')
+        cluster_option = st.radio('Pilih Cluster Intensitas Cahaya', ('Intensitas Cahaya Rendah', 'Intensitas Cahaya Sedang', 'Intensitas Cahaya Tinggi'))
+
+    if(cluster_option == 'Intensitas Cahaya Rendah'): cluster = 'low'
+    elif(cluster_option == 'Intensitas Cahaya Sedang'): cluster = 'med'
+    elif(cluster_option == 'Intensitas Cahaya Tinggi'): cluster = 'high'
+
+    for i in range(1, 6):
+        with columns[i]:
+            img = Image.open('./assets/images/patches/' + cluster + '_' + str(i) +'.png').resize((400,400))
+            st.image(img)
+        
+        
+    # section 3
     st.header('DATA PERSENTASE PENDUDUK MISKIN (P0)')
 
     left_co, right_co = st.columns([3, 1])
     with right_co:
+        st.subheader('PARAMETER')
         plot_year = st.radio("Data Persentase Penduduk Miskin Tahun", ('2020', '2021'))
     with left_co:
         st.bar_chart(df, x='Kabupaten/Kota', y=('P0 ' + plot_year))

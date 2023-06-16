@@ -14,6 +14,7 @@ p {
     margin: 5px auto;
     text-align: justify;
     letter-spacing: 0.5px;
+    margin-bottom: 28px;
 }
 
 th, td {
@@ -28,17 +29,12 @@ th.blank, th.row_heading {
     display: none;
 }
 
-.css-ocqkz7 {
-    gap: 2rem;
-}
-
 canvas {
     margin-top: calc(2vw + 20px);
 }
 
 [data-testid="stImage"] {
     margin: auto;
-    margin-top: calc(1.5vw + 20px);
 }
 
 iframe[srcdoc*="navigationTabs"] {
