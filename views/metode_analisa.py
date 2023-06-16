@@ -43,8 +43,8 @@ def load_view():
 
     st.subheader('MODEL DEEP LEARNING MEMPREDIKSI CLUSTER TINGKAT KECERAHAN')
     st.write('''
-        Model deep learning  yang digunakan dalam penelitian adalah Convolutional Neural Network (CNN) yang arsitekturnya 
-        mirip LeNet-5, VGG16, ResNet, dan Inception. Variabel prediktor yang digunakan adalah potongan citra satelit siang hari, 
+        Model deep learning  yang digunakan dalam penelitian adalah Convolutional Neural Network (CNN), tepatnya
+        VGG16, ResNet, dan Inception. Variabel prediktor yang digunakan adalah potongan citra satelit siang hari, 
         sementara variabel targetnya adalah cluster kecerahan. Setelah dilakukan evaluasi model, akurasi model menunjukkan 
         bahwa model terbaik adalah VGG16 setelah dilakukan augmentasi dan fine-tuning.
     ''')
@@ -59,8 +59,6 @@ def load_view():
 
     st.subheader('PREDIKSI PERSENTASE PENDUDUK MISKIN DENGAN MODEL REGRESI')
     st.write('''
-        Berdasarkan fitur-fitur yang diekstraksi dari citra satelit siang hari, kecerahan minimum, maksimum, rata-rata, 
-        median,  standar deviasi dari kecerahan, persentase rumah tangga yang memiliki akses air minum layak, 
-        jumlah bayi lahir bergizi kurang, dan persentasi rumah tangga menggunakan listrik PLN, dibuat model regresi 
-        untuk memprediksi persentase penduduk miskin.
+        Berdasarkan fitur-fitur yang diekstraksi dari citra satelit siang hari dan fitur intensitas cahaya dari masing-masing 
+        kabupaten/kota, dibuat model regressi (Ridge dan LASSO) untuk memprediksi persentase penduduk miskin.
     ''')
