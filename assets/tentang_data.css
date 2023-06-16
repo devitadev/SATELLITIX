@@ -1,7 +1,7 @@
 h2{
     padding: 0;
     letter-spacing: 1px;
-    margin: calc(2vw + 24px) auto 16px auto ;
+    margin: calc(3.5vw + 28px) auto 16px auto ;
 }
 
 h3 {
@@ -32,16 +32,20 @@ th.blank, th.row_heading {
     gap: 2rem;
 }
 
+canvas {
+    margin-top: calc(2vw + 20px);
+}
+
 [data-testid="stImage"] {
     margin: auto;
     margin-top: calc(1.5vw + 20px);
 }
 
 iframe[srcdoc*="navigationTabs"] {
-    height: 24px
+    height: 0;
 }
 
-[data-testid="column"] {
-    display: flex;
-    align-items: center;
+label[data-baseweb="checkbox"] p{
+    margin: 0;
+    font-size: 16px;
 }
