@@ -12,9 +12,8 @@ def load_view():
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
     # load csv data
-    bps_2020 = pd.read_csv('./assets/datas/bps_2020.csv', sep=';')
-    bps_2021 = pd.read_csv('./assets/datas/bps_2021.csv', sep=';')
-    kab_kota = bps_2020['Kabupaten/Kota'].tolist()
+    df = pd.read_csv('./assets/datas/full_data.csv')
+    kab_kota = [kab_kota_name.lower().title() for kab_kota_name in df['KAB_KOTA']]
 
 
     st.header('CITRA SATELIT')
