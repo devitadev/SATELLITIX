@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import streamlit_theme as stt
 
 from PIL import Image
 
@@ -16,7 +15,7 @@ def load_view():
     kab_kota = [kab_kota_name.lower().title() for kab_kota_name in df['KAB_KOTA']]
     
     with st.sidebar:
-        st.header("PARAMETERS")
+        st.header("PARAMETER CITRA SATELIT")
         img_type = st.radio(
             'Pilih tipe citra satelit',
             ('Citra Satelit Siang Hari', 'Citra Satelit Malam Hari')
