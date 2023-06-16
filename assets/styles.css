@@ -60,7 +60,7 @@ div.block-container {
 }
 
 button[kind="header"] {
-    margin-top: 58px;
+    margin-top: 120px;
 }
 
 @media only screen and (max-width: 640px){
