@@ -14,13 +14,9 @@ def load_view():
     # load csv data
     df = pd.read_csv('./assets/datas/full_data.csv')
     kab_kota = [kab_kota_name.lower().title() for kab_kota_name in df['KAB_KOTA']]
-
-
-    st.header('CITRA SATELIT')
-    left_co, right_co = st.columns([3, 1])
     
-    with right_co:
-        st.subheader("PARAMETERS")
+    with st.sidebar:
+        st.header("PARAMETERS")
         img_type = st.radio(
             'Pilih tipe citra satelit',
             ('Citra Satelit Siang Hari', 'Citra Satelit Malam Hari')
@@ -31,7 +27,14 @@ def load_view():
         )
         kab_kota_option = st.selectbox('Pilih kabupaten/kota', (kab_kota))
         image_path = './assets/images/' + img_type + ' ' + year + '/' + kab_kota_option + '.png'
+        
+    
+    st.header('CITRA SATELIT')
+    if img_type == 'Citra Satelit Siang Hari': sumber = "Google Earth Engine, berdasarkan Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A"
+    elif img_type == 'Citra Satelit Malam Hari': sumber = "https://eogdata.mines.edu/nighttime_light/monthly/v10/"
+    keterangan = "Citra satelit " + kab_kota_option + " berikut merupakan citra satelit tahun " + str(year) + " yang diperoleh dari " + sumber
 
-    with left_co:
-        image = Image.open(image_path).resize((1000, 500))
-        st.image(image)
+    image = Image.open(image_path).resize((1000, 500))
+    st.markdown(keterangan)
+    st.image(image)
+        

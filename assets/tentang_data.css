@@ -1,7 +1,7 @@
 h2{
     padding: 0;
     letter-spacing: 1px;
-    margin: calc(2vw + 24px) auto calc(1vw + 12px) auto ;
+    margin: calc(2vw + 24px) auto 16px auto ;
 }
 
 h3 {
@@ -34,6 +34,7 @@ th.blank, th.row_heading {
 
 [data-testid="stImage"] {
     margin: auto;
+    margin-top: calc(1.5vw + 20px);
 }
 
 iframe[srcdoc*="navigationTabs"] {

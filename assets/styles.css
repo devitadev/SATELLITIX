@@ -59,6 +59,10 @@ div.block-container {
     padding-bottom: 4rem;
 }
 
+button[kind="header"] {
+    margin-top: 58px;
+}
+
 @media only screen and (max-width: 640px){
     .navbar, #navbar {
         flex-direction: column;
