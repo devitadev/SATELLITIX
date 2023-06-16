@@ -1,11 +1,10 @@
 h2{
-    text-align: center;
     padding: 0;
     letter-spacing: 1px;
+    margin: calc(2vw + 24px) auto calc(1vw + 12px) auto ;
 }
 
 h3 {
-    margin: calc(2.5vw + 16px) auto 5px auto;
     padding: 0;
     font-size: 22px;
 }
@@ -15,10 +14,6 @@ p {
     margin: 5px auto;
     text-align: justify;
     letter-spacing: 0.5px;
-}
-
-[data-testid="stImage"] {
-    margin: 20px auto;
 }
 
 th, td {
@@ -33,6 +28,19 @@ th.blank, th.row_heading {
     display: none;
 }
 
+.css-ocqkz7 {
+    gap: 2rem;
+}
+
+[data-testid="stImage"] {
+    margin: auto;
+}
+
 iframe[srcdoc*="navigationTabs"] {
-    height: calc(1vw + 80px);
+    height: 24px
+}
+
+[data-testid="column"] {
+    display: flex;
+    align-items: center;
 }

@@ -2,22 +2,22 @@ h2 {
     text-align: center;
     padding: 0;
     letter-spacing: 1px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 h3 {
-    margin: calc(2vw + 16px) 5vw 5px 5vw;
+    margin: calc(1vw + 10px) 5vw 5px 5vw;
     padding: 0;
     font-size: 22px;
 }
 
 p {
     font-size: 17px;
-    margin: 5px 5vw;
+    margin: 5px 5vw calc(1vw + 10px) 5vw;
     text-align: justify;
     letter-spacing: 0.5px;
 }
 
 iframe[srcdoc*="navigationTabs"] {
-    height: calc(1vw + 80px);
+    height: calc(2.5vw + 40px);
 }
