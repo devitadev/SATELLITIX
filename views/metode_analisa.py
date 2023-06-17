@@ -32,20 +32,20 @@ def load_view():
     st.write('''
         Mengekstraksi tingkat intensitas cahaya dari setiap potongan citra satelit malam hari berukuran 1km x 1km. 
         Kemudian menghitung in minimum, maksimum, rata-rata, median, dan standar deviasi dari potongan-potongan 
-        kecerahan di setiap kabupaten/kota.
+        intensitas cahaya di setiap kabupaten/kota.
     ''')
     
-    st.subheader('CLUSTERING TINGKAT KECERAHAN')
+    st.subheader('CLUSTERING TINGKAT INTENSITAS CAHAYA')
     st.write('''
-        Pada tahap ini, tingkat kecerahan dari potongan-potongan citra satelit pada malam hari dikelompokan menjadi 3 
-        yaitu, tingkat kecerahan rendah, sedang, dan tinggi menggunakan metode Gaussian Mixture.
+        Pada tahap ini, tingkat intensitas cahaya dari potongan-potongan citra satelit pada malam hari dikelompokan menjadi 3 
+        yaitu, tingkat intensitas cahaya rendah, sedang, dan tinggi menggunakan metode Gaussian Mixture.
     ''')
 
-    st.subheader('MODEL DEEP LEARNING MEMPREDIKSI CLUSTER TINGKAT KECERAHAN')
+    st.subheader('MODEL DEEP LEARNING MEMPREDIKSI CLUSTER TINGKAT INTENSITAS CAHAYA')
     st.write('''
         Model deep learning  yang digunakan dalam penelitian adalah Convolutional Neural Network (CNN), tepatnya
         VGG16, ResNet, dan Inception. Variabel prediktor yang digunakan adalah potongan citra satelit siang hari, 
-        sementara variabel targetnya adalah cluster kecerahan. Setelah dilakukan evaluasi model, akurasi model menunjukkan 
+        sementara variabel targetnya adalah cluster intensitas cahaya. Setelah dilakukan evaluasi model, akurasi model menunjukkan 
         bahwa model terbaik adalah VGG16 setelah dilakukan augmentasi dan fine-tuning.
     ''')
 
