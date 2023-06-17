@@ -28,10 +28,10 @@ def load_view():
         dengan ukuran 1km x 1km.
     ''')
 
-    st.subheader('EKSTRAKSI TINGKAT KECERAHAN DARI CITRA CATELIT MALAM HARI')
+    st.subheader('EKSTRAKSI TINGKAT INTENSITAS CAHAYA DARI CITRA CATELIT MALAM HARI')
     st.write('''
-        Mengekstraksi tingkat kecerahan dari setiap potongan citra satelit malam hari berukuran 1km x 1km. 
-        Kemudian menghitung kecerahan minimum, maksimum, rata-rata, median, dan standar deviasi dari potongan-potongan 
+        Mengekstraksi tingkat intensitas cahaya dari setiap potongan citra satelit malam hari berukuran 1km x 1km. 
+        Kemudian menghitung in minimum, maksimum, rata-rata, median, dan standar deviasi dari potongan-potongan 
         kecerahan di setiap kabupaten/kota.
     ''')
     
