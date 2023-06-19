@@ -89,7 +89,7 @@ def load_view():
         # Add the poverty index as a choropleth map layer
         choropleth = Choropleth(geo_data = merged_data, data = merged_data, columns = ['KAB_KOTA', y_column],
                 key_on = 'feature.properties.KAB_KOTA', fill_color = 'RdYlGn_r', fill_opacity = 0.7, line_opacity = 0.4,
-                legend_name='Persentase Penduduk Miskin (P0)').add_to(map_y)
+                legend_name='Persentase Penduduk Miskin (P0)', highlight=True).add_to(map_y)
 
         # Create a GeoJson object for the choropleth layer
         geojson = folium.GeoJson(
@@ -99,7 +99,8 @@ def load_view():
                 'fillColor': 'RdYlGn_r',
                 'color': 'black',
                 'weight': 0
-            }
+            },
+            highlight_function=lambda feature: {'color': 'black', 'weight': 2}
         )
 
         feature_tooltip = ['Kabupaten/Kota', y_column]
