@@ -61,6 +61,7 @@ def load_view():
 
         # merge shape file and bps data
         merged_data = pd.merge(shp_data, data_complete, on='KAB_KOTA')
+        merged_data['Error'] = abs(merged_data[y_column] - merged_data['y actual'])
 
         # filter data
         if (len(ms_kab_kota) == 0): selected_data = merged_data.copy()
@@ -87,18 +88,25 @@ def load_view():
 
         # Add the poverty index as a choropleth map layer
         choropleth = Choropleth(geo_data = merged_data, data = merged_data, columns = ['KAB_KOTA', y_column],
-                key_on = 'feature.properties.KAB_KOTA', fill_color = 'RdYlGn_r', fill_opacity = 0.7, line_opacity = 0.25,
+                key_on = 'feature.properties.KAB_KOTA', fill_color = 'RdYlGn_r', fill_opacity = 0.7, line_opacity = 0.4,
                 legend_name='Persentase Penduduk Miskin (P0)').add_to(map_y)
 
         # Create a GeoJson object for the choropleth layer
         geojson = folium.GeoJson(
             merged_data,
             style_function=lambda feature: {
-                'fillOpacity': 0 if feature['properties']['KAB_KOTA'] in ms_kab_kota else 0.7,
+                'fillOpacity': 0 if feature['properties']['KAB_KOTA'] in ms_kab_kota else 0.5,
                 'fillColor': 'RdYlGn_r',
                 'color': 'black',
-                'weight': 0.1
+                'weight': 0
             }
+        )
+
+        feature_tooltip = ['Kabupaten/Kota', y_column]
+        if (y_column != 'y actual'): feature_tooltip = ['Kabupaten/Kota', y_column, 'y actual', 'Error']
+        print('feature tooltip ', feature_tooltip)
+        choropleth.geojson.add_child(
+            folium.features.GeoJsonTooltip(feature_tooltip)
         )
 
         # Add the GeoJson layer to the map
