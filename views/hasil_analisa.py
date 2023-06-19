@@ -2,6 +2,7 @@ import streamlit as st
 import folium
 import pandas as pd
 import geopandas as gpd
+import math
 
 from folium import Choropleth
 from streamlit_folium import folium_static
@@ -34,6 +35,8 @@ def load_view():
             'Prediksi Berdasarkan Model LASSO Dengan Extracted Features dan Light Features',
             'Prediksi Berdasarkan Model Ridge Dengan Extracted Features',
             'Prediksi Berdasarkan Model LASSO Dengan Extracted Features',
+            'Prediksi Berdasarkan Model Ridge Dengan Light Features',
+            'Prediksi Berdasarkan Model LASSO Dengan Light Features',
             'Berdasarkan Data BPS'
         ))
         ms_kab_kota = st.multiselect('KABUPATEN/KOTA', kab_kota, kab_kota)
@@ -46,7 +49,11 @@ def load_view():
             y_column = 'y pred ridge with extracted features'
         elif map_type == 'Prediksi Berdasarkan Model LASSO Dengan Extracted Features':
             y_column = 'y pred lasso with extracted features'
-        else: y_column = 'y actual'
+        elif map_type == 'Prediksi Berdasarkan Model Ridge Dengan Light Features':
+            y_column = 'y pred ridge with light features'
+        elif map_type == 'Prediksi Berdasarkan Model LASSO Dengan Light Features':
+            y_column = 'y pred lasso with light features'
+        elif map_type == 'Berdasarkan Data BPS': y_column = 'y actual'
 
     
     with left_co:
@@ -63,12 +70,20 @@ def load_view():
         latitude = selected_data.geometry.centroid.y.mean()
         longitude = selected_data.geometry.centroid.x.mean()
 
-        print(latitude, longitude)
+        # calculate latitude longitude distance
+        dist_lat = selected_data.geometry.centroid.y.max() - selected_data.geometry.centroid.y.min()
+        dist_long = selected_data.geometry.centroid.x.max() - selected_data.geometry.centroid.x.min()
+
+        # calculate zoom_start
+        zoom_start = 8
+        if (dist_long == 0 and dist_lat == 0):
+            zoom_start = 10
+        else:
+            if ((dist_long/2) < dist_lat): zoom_start = math.sqrt(0.5 / (dist_long)) + 7.8
+            else : zoom_start = math.sqrt(0.25 / dist_lat) + 7.8
 
         # Create a Folium map object
-        map_y = folium.Map(location=[latitude, longitude], scrollWheelZoom = False, zoom_start = 8)
-
-        print(y_column)
+        map_y = folium.Map(location=[latitude, longitude], scrollWheelZoom = False, zoom_start = zoom_start)
 
         # Add the poverty index as a choropleth map layer
         choropleth = Choropleth(geo_data = merged_data, data = merged_data, columns = ['KAB_KOTA', y_column],
@@ -99,10 +114,15 @@ def load_view():
     st.header("EVALUASI MODEL")
 
     df = pd.DataFrame()
-    df['Model'] = ['Model Regresi Ridge', 'Model LASSO Ridge', 'Model Regresi Ridge', 'Model LASSO Ridge']
-    df['Indikator'] = ['Extracted Features dan Light Features', 'Extracted Features dan Light Features', 'Extracted Features', 'Extracted Features']
-    df['MAPE (%)'] = [14.13783141, 17.22131763, 18.34835365, 17.49600814]
-    df['R2'] = [0.579108331, 0.518760325, 0.461738738, 0.502104425]
-    df['Keterangan'] = ['Semua asumsi terpenuhi', 'Model tidak memenuhi asumsi normalitas', 'Model tidak memenuhi asumsi normalitas', 'Model tidak memenuhi asumsi normalitas']
+    df['Model'] = ['Model Regresi Ridge', 'Model LASSO Ridge', 'Model Regresi Ridge', 'Model LASSO Ridge', 'Model Regresi Ridge', 'Model LASSO Ridge']
+    df['Indikator'] = ['Extracted Features dan Light Features', 'Extracted Features dan Light Features', 'Extracted Features', 'Extracted Features', 'Light Features', 'Light Features']
+    df['MAPE (%)'] = [13.61596641, 21.0630029, 14.17403577, 22.19840047, 20.96039997, 20.77718022]
+    df['R2'] = [0.64461209, 0.384482851, 0.627537489, 0.322709919, 0.359154537, 0.357704315]
+    df['Keterangan'] = ['Asumsi Linearitas, Homoskedastisitas, Independensi, Normalitas Terpenuhi', 
+                        'Asumsi Linearitas, Homoskedastisitas, Independensi, Normalitas Terpenuhi', 
+                        'Asumsi Linearitas, Homoskedastisitas, Independensi, Normalitas Terpenuhi', 
+                        'Asumsi Linearitas, Homoskedastisitas, Independensi, Normalitas Terpenuhi',
+                        'Asumsi Linearitas, Homoskedastisitas, Independensi, Normalitas Terpenuhi', 
+                        'Asumsi Linearitas, Homoskedastisitas, Independensi, Normalitas Terpenuhi']
 
     st.table(df.style.highlight_between(0, color='#829CD0'))
