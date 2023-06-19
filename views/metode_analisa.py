@@ -16,23 +16,21 @@ def load_view():
 
     st.subheader('PENGUMPULAN DATA')
     st.write('''
-        Data yang diperlukan untuk analisis adalah data persentase penduduk miskin, citra satelit malam hari, 
-        citra satelit siang hari,  persentase rumah tangga yang memiliki akses air minum layak, jumlah bayi lahir 
-        bergizi kurang, persentasi rumah tangga menggunakan listrik PLN, dan batas administrasi kabupaten/kota.
+        Data yang digunakan dalam analisis adalah data persentase penduduk miskin berdasarkan kabupaten/kota di Jawa Tengah, 
+        citra satelit malam hari di Jawa Tengah, dan citra satelit siang hari di Jawa Tengah.
     ''')
 
     st.subheader('PRA-PEMROSESAN DATA')
     st.write('''
-        Sebelum memulai analisis, langkah penting yang perlu dilakukan adalah menangani masalah missing value dalam data. 
-        Selain itu, gambar citra satelit siang hari diubah menjadi format PNG dan dipotong menjadi potongan-potongan kecil 
-        dengan ukuran 1km x 1km.
+        Sebelum memulai analisis, citra satelit siang hari dan malam hari diubah menjadi format PNG dan kemudian dipotong 
+        menjadi potongan-potongan kecil dengan ukuran 1km x 1km.
     ''')
 
     st.subheader('EKSTRAKSI TINGKAT INTENSITAS CAHAYA DARI CITRA CATELIT MALAM HARI')
     st.write('''
         Mengekstraksi tingkat intensitas cahaya dari setiap potongan citra satelit malam hari berukuran 1km x 1km. 
-        Kemudian menghitung in minimum, maksimum, rata-rata, median, dan standar deviasi dari potongan-potongan 
-        intensitas cahaya di setiap kabupaten/kota.
+        Kemudian, menghitung intensitas cahaya minimum, maksimum, rata-rata, median, dan standar deviasi dari setiap 
+        potongan-potongan citra satelit malam hari di setiap kabupaten/kota.
     ''')
     
     st.subheader('CLUSTERING TINGKAT INTENSITAS CAHAYA')
@@ -46,12 +44,12 @@ def load_view():
         Model deep learning  yang digunakan dalam penelitian adalah Convolutional Neural Network (CNN), tepatnya
         VGG16, ResNet, dan Inception. Variabel prediktor yang digunakan adalah potongan citra satelit siang hari, 
         sementara variabel targetnya adalah cluster intensitas cahaya. Setelah dilakukan evaluasi model, akurasi model menunjukkan 
-        bahwa model terbaik adalah VGG16 setelah dilakukan augmentasi dan fine-tuning.
+        bahwa model terbaik adalah model Inception setelah dilakukan augmentasi gambar.
     ''')
 
     st.subheader('EKSTRAKSI FITUR')
     st.write('''
-        Ekstraksi fitur pada layer ke-2 model VGG16 dengan augmentasi dan fine-tuning yang sudah dilatih. Ekstraksi fitur 
+        Ekstraksi fitur pada layer ke-2 model Inception dengan augmentasi gambar yang sudah dilatih. Ekstraksi fitur 
         ini dilakukan pada setiap potongan citra satelit siang hari dan kemudian dihitung rata-rata fitur untuk setiap 
         kabupaten/kota. Dengan mengambil rata-rata fitur, didapatkan representasi informasi dari potongan-potongan citra 
         satelit untuk memprediksi persentase penduduk miskin di setiap kabupaten/kota.
