@@ -20,7 +20,7 @@ def load_view():
     st.write('''
         <p class="description">
         Selamat datang di <b>SATELLITIX</b>! Situs yang menghadirkan prediksi '<b>Persentase Penduduk Miskin (P0)</b>' di Jawa Tengah, Indonesia, 
-        menggunakan <b>deep learning</b> berdasarkan <b>citra satelit</b>. Dengan antarmuka yang mudah digunakan, Anda dapat menjelajahi visualisasi 
+        menggunakan <b>deep learning</b> berdasarkan <b>citra satelit</b> dan <b>nighttime light</b>. Dengan antarmuka yang mudah digunakan, Anda dapat menjelajahi visualisasi 
         terperinci, peta interaktif, dan laporan berbasis data yang menyoroti prediksi tingkat kemiskinan di setiap kabupaten/kota 
         di wilayah Jawa Tengah. Jelajahi pola kemiskinan dan dorong perubahan positif guna mengatasi tantangan kemiskinan. </p>
     ''', unsafe_allow_html=True)
@@ -33,7 +33,7 @@ def load_view():
         st.write('''
             <p class="manfaat">
             <b>SATELLITIX</b> menyediakan solusi yang efisien untuk mengumpulkan data Persentase Penduduk Miskin (P0) berdasarkan kabupaten/kota 
-            di Jawa Tengah menggunakan <b>citra satelit</b> dan <b>deep learning</b>.</p>
+            di Jawa Tengah menggunakan <b>citra satelit</b>, <b>nighttime light</b> dan <b>deep learning</b>.</p>
         ''', unsafe_allow_html=True)
     with right_co:
         img_manfaat_1 = Image.open('./assets/images/manfaat-1.jpg')

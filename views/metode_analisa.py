@@ -17,25 +17,25 @@ def load_view():
     st.subheader('PENGUMPULAN DATA')
     st.write('''
         Data yang digunakan dalam analisis adalah data persentase penduduk miskin berdasarkan kabupaten/kota di Jawa Tengah, 
-        citra satelit malam hari di Jawa Tengah, dan citra satelit siang hari di Jawa Tengah.
+        nighttime light di Jawa Tengah, dan citra satelit siang hari di Jawa Tengah.
     ''')
 
     st.subheader('PRA-PEMROSESAN DATA')
     st.write('''
-        Sebelum memulai analisis, citra satelit siang hari dan malam hari diubah menjadi format PNG dan kemudian dipotong 
+        Sebelum memulai analisis, citra satelit siang hari dan nighttime light diubah menjadi format PNG dan kemudian dipotong 
         menjadi potongan-potongan kecil dengan ukuran 1km x 1km.
     ''')
 
-    st.subheader('EKSTRAKSI TINGKAT INTENSITAS CAHAYA DARI CITRA CATELIT MALAM HARI')
+    st.subheader('EKSTRAKSI TINGKAT INTENSITAS CAHAYA DARI NIGHTTIME LIGHT')
     st.write('''
-        Mengekstraksi tingkat intensitas cahaya dari setiap potongan citra satelit malam hari berukuran 1km x 1km. 
+        Mengekstraksi tingkat intensitas cahaya dari setiap potongan nighttime light berukuran 1km x 1km. 
         Kemudian, menghitung intensitas cahaya minimum, maksimum, rata-rata, median, dan standar deviasi dari setiap 
-        potongan-potongan citra satelit malam hari di setiap kabupaten/kota.
+        potongan-potongan nighttime light di setiap kabupaten/kota.
     ''')
     
     st.subheader('CLUSTERING TINGKAT INTENSITAS CAHAYA')
     st.write('''
-        Pada tahap ini, tingkat intensitas cahaya dari potongan-potongan citra satelit pada malam hari dikelompokan menjadi 3 
+        Pada tahap ini, tingkat intensitas cahaya dari potongan-potongan nighttime light dikelompokan menjadi 3 
         yaitu, tingkat intensitas cahaya rendah, sedang, dan tinggi menggunakan metode Gaussian Mixture.
     ''')
 

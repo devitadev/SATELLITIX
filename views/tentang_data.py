@@ -15,26 +15,26 @@ def load_view():
     kab_kota = df['Kabupaten/Kota'].copy()
 
     # section 1
-    st.header('CITRA SATELIT')
+    st.header('DATA SATELIT')
 
     left_co, right_co = st.columns([3, 1])
 
     with right_co:
-        st.subheader("PARAMETER CITRA SATELIT")
+        st.subheader("PARAMETER DATA SATELIT")
         img_type = st.radio(
-            'Pilih tipe citra satelit',
-            ('Citra Satelit Siang Hari', 'Citra Satelit Malam Hari')
+            'Pilih tipe data satelit',
+            ('Citra Satelit Siang Hari', 'Nighttime Light')
         )
         year = st.radio(
-            'Pilih tahun citra satelit',
+            'Pilih tahun data satelit',
             ('2020', '2021')
         )
         kab_kota_option = st.selectbox('Pilih kabupaten/kota', (kab_kota))
         image_path = './assets/images/' + img_type + ' ' + year + '/' + kab_kota_option + '.png'
     
     if img_type == 'Citra Satelit Siang Hari': sumber = "Google Earth Engine, berdasarkan Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A"
-    elif img_type == 'Citra Satelit Malam Hari': sumber = "https://eogdata.mines.edu/nighttime_light/monthly/v10/"
-    keterangan = "Citra satelit " + kab_kota_option + " berikut merupakan citra satelit tahun " + str(year) + " yang diperoleh dari " + sumber
+    elif img_type == 'Nighttime Light': sumber = "Earth Observation Group (EOG) yang dapat diakses melalui https://eogdata.mines.edu/nighttime_light/annual/v21/"
+    keterangan = "Data satelit " + kab_kota_option + " berikut merupakan " + img_type + " tahun " + str(year) + " yang diperoleh dari " + sumber
     
     with left_co:
         image = Image.open(image_path).resize((1000, 500))
@@ -43,6 +43,9 @@ def load_view():
 
     # section 2
     st.header("CITRA SATELIT BERDASARKAN CLUSTER INTENSITAS CAHAYA")
+    st.write('''Dalam kasus analisa ini, daerah dengan intensitas cahaya malam hari yang lebih tinggi menggambarkan daerah dengan 
+             tingkat ekonomi yang lebih baik. Melalui potongan gambar berdasarkan cluster berikut, kita dapat melihat perbedaan 
+             citra satelit dari setiap cluster intensitas cahaya''')
 
     columns = st.columns(6)
     with columns[0]: 
