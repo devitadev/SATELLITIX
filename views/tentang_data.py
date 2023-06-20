@@ -23,7 +23,7 @@ def load_view():
         st.subheader("PARAMETER DATA SATELIT")
         img_type = st.radio(
             'Pilih tipe data satelit',
-            ('Citra Satelit Siang Hari', 'Nighttime Light')
+            ('Citra Satelit', 'Nighttime Light')
         )
         year = st.radio(
             'Pilih tahun data satelit',
@@ -32,7 +32,7 @@ def load_view():
         kab_kota_option = st.selectbox('Pilih kabupaten/kota', (kab_kota))
         image_path = './assets/images/' + img_type + ' ' + year + '/' + kab_kota_option + '.png'
     
-    if img_type == 'Citra Satelit Siang Hari': sumber = "Google Earth Engine, berdasarkan Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A"
+    if img_type == 'Citra Satelit': sumber = "Google Earth Engine, berdasarkan Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A"
     elif img_type == 'Nighttime Light': sumber = "Earth Observation Group (EOG) yang dapat diakses melalui https://eogdata.mines.edu/nighttime_light/annual/v21/"
     keterangan = "Data satelit " + kab_kota_option + " berikut merupakan " + img_type + " tahun " + str(year) + " yang diperoleh dari " + sumber
     

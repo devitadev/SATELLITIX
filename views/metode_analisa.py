@@ -17,12 +17,12 @@ def load_view():
     st.subheader('PENGUMPULAN DATA')
     st.write('''
         Data yang digunakan dalam analisis adalah data persentase penduduk miskin berdasarkan kabupaten/kota di Jawa Tengah, 
-        nighttime light di Jawa Tengah, dan citra satelit siang hari di Jawa Tengah.
+        nighttime light di Jawa Tengah, dan citra satelit di Jawa Tengah.
     ''')
 
     st.subheader('PRA-PEMROSESAN DATA')
     st.write('''
-        Sebelum memulai analisis, citra satelit siang hari dan nighttime light diubah menjadi format PNG dan kemudian dipotong 
+        Sebelum memulai analisis, citra satelit dan nighttime light diubah menjadi format PNG dan kemudian dipotong 
         menjadi potongan-potongan kecil dengan ukuran 1km x 1km.
     ''')
 
@@ -42,7 +42,7 @@ def load_view():
     st.subheader('MODEL DEEP LEARNING MEMPREDIKSI CLUSTER TINGKAT INTENSITAS CAHAYA')
     st.write('''
         Model deep learning  yang digunakan dalam penelitian adalah Convolutional Neural Network (CNN), tepatnya
-        VGG16, ResNet, dan Inception. Variabel prediktor yang digunakan adalah potongan citra satelit siang hari, 
+        VGG16, ResNet, dan Inception. Variabel prediktor yang digunakan adalah potongan data citra satelit, 
         sementara variabel targetnya adalah cluster intensitas cahaya. Setelah dilakukan evaluasi model, akurasi model menunjukkan 
         bahwa model terbaik adalah model Inception setelah dilakukan augmentasi gambar.
     ''')
@@ -50,13 +50,13 @@ def load_view():
     st.subheader('EKSTRAKSI FITUR')
     st.write('''
         Ekstraksi fitur pada layer ke-2 model Inception dengan augmentasi gambar yang sudah dilatih. Ekstraksi fitur 
-        ini dilakukan pada setiap potongan citra satelit siang hari dan kemudian dihitung rata-rata fitur untuk setiap 
+        ini dilakukan pada setiap potongan citra satelit dan kemudian dihitung rata-rata fitur untuk setiap 
         kabupaten/kota. Dengan mengambil rata-rata fitur, didapatkan representasi informasi dari potongan-potongan citra 
         satelit untuk memprediksi persentase penduduk miskin di setiap kabupaten/kota.
     ''')
 
     st.subheader('PREDIKSI PERSENTASE PENDUDUK MISKIN DENGAN MODEL REGRESI')
     st.write('''
-        Berdasarkan fitur-fitur yang diekstraksi dari citra satelit siang hari dan fitur intensitas cahaya dari masing-masing 
+        Berdasarkan fitur-fitur yang diekstraksi dari citra satelit dan fitur intensitas cahaya dari masing-masing 
         kabupaten/kota, dibuat model regressi (Ridge dan LASSO) untuk memprediksi persentase penduduk miskin.
     ''')
