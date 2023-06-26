@@ -22,6 +22,8 @@ def load_view():
     shp_data = gpd.read_file('./assets/datas/BATAS KABUPATEN KOTA DESEMBER 2019 DUKCAPIL/BATAS KABUPATEN KOTA DESEMBER 2019 DUKCAPIL.shp')
     # shp_data.crs = 'EPSG:23839'
 
+    # load latitude longitude information
+    lat_long = pd.read_csv('./assets/datas/latitude_longitude.csv')
     
     # section 1
     st.header("VISUALISASI PETA PERSENTASE PENDUDUK MISKIN (P0) TAHUN 2021")
@@ -59,21 +61,22 @@ def load_view():
     with left_co:
         st.subheader('PETA ' + map_type.upper() + " TAHUN 2021")
 
-        # merge shape file and bps data
+        # merge shape file and bps data and latitude longitude data
         merged_data = pd.merge(shp_data, data_complete, on='KAB_KOTA')
         merged_data['Error'] = abs(merged_data[y_column] - merged_data['y actual'])
+        merged_data = pd.merge(merged_data, lat_long, on='KAB_KOTA')
 
         # filter data
         if (len(ms_kab_kota) == 0): selected_data = merged_data.copy()
         else: selected_data = merged_data[merged_data['KAB_KOTA'].isin(ms_kab_kota)]
 
         # calculate position
-        latitude = selected_data.geometry.centroid.y.mean()
-        longitude = selected_data.geometry.centroid.x.mean()
+        latitude = selected_data['latitude'].mean()
+        longitude = selected_data['longitude'].mean()
 
         # calculate latitude longitude distance
-        dist_lat = selected_data.geometry.centroid.y.max() - selected_data.geometry.centroid.y.min()
-        dist_long = selected_data.geometry.centroid.x.max() - selected_data.geometry.centroid.x.min()
+        dist_lat = selected_data['latitude'].max() - selected_data['latitude'].min()
+        dist_long = selected_data['longitude'].max() - selected_data['longitude'].min()
 
         # calculate zoom_start
         zoom_start = 8
@@ -105,7 +108,6 @@ def load_view():
 
         feature_tooltip = ['Kabupaten/Kota', y_column]
         if (y_column != 'y actual'): feature_tooltip = ['Kabupaten/Kota', y_column, 'y actual', 'Error']
-        print('feature tooltip ', feature_tooltip)
         choropleth.geojson.add_child(
             folium.features.GeoJsonTooltip(feature_tooltip)
         )
