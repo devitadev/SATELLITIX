@@ -5,27 +5,6 @@ from PIL import Image
 
 # halaman tentang data
 
-from PIL import Image
-
-def resize_and_add_transparency(image):
-    # Menghitung lebar dan tinggi baru dengan mempertahankan aspek rasio dan batasan maksimum
-    aspect_ratio = image.width / image.height
-    if aspect_ratio > (5/2) :
-        new_width = 1200
-        new_height = int(new_width / aspect_ratio)
-    else:
-        new_height = 480
-        new_width = int(new_height * aspect_ratio)
-
-    # Membuat latar belakang transparan dengan ukuran baru
-    background = Image.new('RGBA', (1200, 480), (0, 0, 0, 0))
-
-    # Menempelkan gambar asli ke latar belakang transparan
-    offset = ((1200 - new_width) // 2, (480 - new_height) // 2)
-    background.paste(image.resize((new_width, new_height)), offset)
-    return background
-
-
 def load_view():
     # load style
     with open('./assets/tentang_data.css') as f:
@@ -59,12 +38,8 @@ def load_view():
     
     with left_co:
         image = Image.open(image_path)
-        # make the image consistent
-        # .resize((1000, 500))
-
-
         st.markdown(keterangan)
-        st.image(resize_and_add_transparency(image))
+        st.image(image)
 
     # section 2
     st.header("CITRA SATELIT BERDASARKAN CLUSTER INTENSITAS CAHAYA")
