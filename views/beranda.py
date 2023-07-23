@@ -39,25 +39,25 @@ def load_view():
         img_manfaat_1 = Image.open('./assets/images/manfaat-1.jpg')
         st.image(img_manfaat_1)
 
-    left_co, right_co = st.columns([1, 2])
-    with left_co:
+    left_co_2, right_co_2 = st.columns([1, 2])
+    with left_co_2:
         img_manfaat_2 = Image.open('./assets/images/manfaat-2.jpg')
         st.image(img_manfaat_2)
-    with right_co:
+    with right_co_2:
         st.write('''
             <p class="manfaat">
             <b>SATELLITIX</b> memanfaatkan potensi <b>Big Data</b> dalam <b>official statistics</b> dengan memprediksi Persentase Penduduk Miskin (P0)
              di Jawa Tengah dengan cara yang lebih mudah dan efisien.</p>
         ''', unsafe_allow_html=True)
 
-    left_co, right_co = st.columns([2, 1])
-    with left_co:
+    left_co_3, right_co_3 = st.columns([2, 1])
+    with left_co_3:
         st.write('''
             <p class="manfaat">
             <b>SATELLITIX</b> adalah media yang <b>mudah diakses</b> dan <b>intuitif</b> bagi pengguna yang ingin memperoleh informasi mengenai 
             prediksi Persentase Penduduk Miskin (P0) di Jawa Tengah.</p>
         ''', unsafe_allow_html=True)
-    with right_co:
+    with right_co_3:
         img_manfaat_3 = Image.open('./assets/images/manfaat-3.jpg')
         st.image(img_manfaat_3)
 

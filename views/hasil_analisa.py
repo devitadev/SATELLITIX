@@ -125,7 +125,7 @@ def load_view():
     st.header("EVALUASI MODEL")
 
     df = pd.DataFrame()
-    df['Model'] = ['Model Regresi Ridge', 'Model LASSO Ridge', 'Model Regresi Ridge', 'Model LASSO Ridge', 'Model Regresi Ridge', 'Model LASSO Ridge']
+    df['Model'] = ['Model Regresi Ridge', 'Model Regresi LASSO', 'Model Regresi Ridge', 'Model Regresi LASSO', 'Model Regresi Ridge', 'Model Regresi LASSO']
     df['Indikator'] = ['Extracted Features dan Light Features', 'Extracted Features dan Light Features', 'Extracted Features', 'Extracted Features', 'Light Features', 'Light Features']
     df['MAPE (%)'] = [13.61596641, 21.0630029, 14.17403577, 22.19840047, 20.96039997, 20.77718022]
     df['R2'] = [0.64461209, 0.384482851, 0.627537489, 0.322709919, 0.359154537, 0.357704315]

@@ -65,10 +65,10 @@ def load_view():
     # section 3
     st.header('DATA PERSENTASE PENDUDUK MISKIN (P0)')
 
-    left_co, right_co = st.columns([3, 1])
-    with right_co:
+    left_co_2, right_co_2 = st.columns([3, 1])
+    with right_co_2:
         st.subheader('PARAMETER')
         plot_year = st.radio("Data Persentase Penduduk Miskin Tahun", ('2020', '2021'))
-    with left_co:
+    with left_co_2:
         st.bar_chart(df, x='Kabupaten/Kota', y=('P0 ' + plot_year))
     
